@@ -1,0 +1,14 @@
+MDScreen:
+    name: "main"
+    MDRectangleFlatButton:
+        text: 'Tasks'
+        pos_hint: {'center_x':0.5, 'center_y':0.6}
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "task_main"
+    MDRectangleFlatButton:
+        text: 'Recipe'
+        pos_hint: {'center_x':0.5, 'center_y':0.5}
+        on_press:
+            root.manager.transition.direction = "left"
+            root.manager.current = 'recipe_main'

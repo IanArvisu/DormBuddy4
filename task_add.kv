@@ -1,0 +1,76 @@
+MDScreen:
+    name: 'task_add'
+    MDIconButton:
+        icon: "chevron-left"
+        user_font_size: "40sp"
+        pos_hint: {'center_y': .95}
+        on_release:
+            root.manager.transition.direction = "right"
+            root.manager.current = 'task_main'
+    MDLabel:
+        text: "Add Task"
+        pos_hint: {'center_x':.8, 'center_y':0.925}
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {'center_x':.5, 'center_y':0.78}
+        canvas:
+            Color:
+                rgb: (238/255, 238/255, 238/255, 1)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            id: title
+            hint_text: "Task Title"
+            size_hint: 1, None
+            pos_hint: {'center_x':.5, 'center_y':0.5}
+            height: self.minimum_height
+            multiline: False
+            cursor_color: 1, 170/255, 23/255, 1
+            cursor_width: "2sp"
+            foreground_color: 1, 170/255, 23/255, 1
+            background_color: 0,0,0,0
+            padding: 15
+            font_size: "18sp"
+    MDFloatLayout:
+        size_hint: .85, .28
+        pos_hint: {'center_x':.5, 'center_y':0.57}
+        canvas:
+            Color:
+                rgb: (238/255, 238/255, 238/255, 1)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            id: description
+            hint_text: "Description"
+            size_hint: 1, None
+            pos_hint: {'center_x':.5, 'center_y':0.5}
+            height: 180
+            multiline: False
+            cursor_color: 1, 170/255, 23/255, 1
+            cursor_width: "2sp"
+            foreground_color: 1, 170/255, 23/255, 1
+            background_color: 0,0,0,0
+            padding: 15
+            font_size: "18sp"
+    Button:
+        text: "Add"
+        size_hint: .45, .08
+        pos_hint: {'center_x':.5, 'center_y':0.36}
+        background_color: 0,0,0,0
+        font_size: "18sp"
+        color: 1,1,1,1
+        on_release:
+            app.add_task(title.text, description.text)
+            root.manager.transition.direction = "right"
+            root.manager.current = 'task_main'
+        canvas.before:
+            Color:
+                rgb: (204/255, 255/255, 133/255, 1)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
